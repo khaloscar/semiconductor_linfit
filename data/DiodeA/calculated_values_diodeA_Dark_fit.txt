@@ -1,6 +1,8 @@
 Name: Diode A Dark
 Intercept: 1.828130248751985e-12
 Slope: 32.230473849389455
+Fit domain: [0.25, 0.6]
 Ideality constant: 1.200160048941323
 Series Rs: 1.0825400520608137
+Used I_high: 0.016
 Current at negative voltage: -7.7853e-10

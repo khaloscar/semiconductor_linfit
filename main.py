@@ -245,8 +245,10 @@ def get_lin_fit():
                 f"Name: {data.name}\n"
                 f"Intercept: {data.y_0}\n"
                 f"Slope: {data.slope}\n"
+                f"Fit domain: {data.domain}\n"
                 f"Ideality constant: {data.ideality_constant}\n"
                 f"Series Rs: {data.Rs}\n"
+                f"Used I_high: {I_highs[i]}\n"
                 f"Current at negative voltage: {data.y[0]}\n"
                 )
             print(info)

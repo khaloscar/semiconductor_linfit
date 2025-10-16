@@ -247,7 +247,7 @@ def get_lin_fit():
                 f"Slope: {data.slope}\n"
                 f"Ideality constant: {data.ideality_constant}\n"
                 f"Series Rs: {data.Rs}\n"
-                f"Current backward bias (I0): {data.y[0]}\n"
+                f"Current at negative voltage: {data.y[0]}\n"
                 )
             print(info)
 

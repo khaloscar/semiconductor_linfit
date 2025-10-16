@@ -3,4 +3,4 @@ Intercept: 1.9602452416224904e-12
 Slope: 32.02934460271523
 Ideality constant: 1.207696490586514
 Series Rs: 1.0628575056597078
-Current backward bias (I0): -7.63529e-08
+Current at negative voltage: -7.63529e-08

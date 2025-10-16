@@ -1,0 +1,5 @@
+Name: Diode B Dark
+Intercept: 2.7920470264106944e-07
+Slope: 36.90032805802091
+Ideality constant: 1.0482759668603314
+Series Rs: 1.0494528237741183

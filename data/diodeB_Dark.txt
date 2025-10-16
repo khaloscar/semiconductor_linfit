@@ -98,9 +98,3 @@ Voltage (V)	Current (A)
 0,840000	0,094741
 0,860000	0,098895
 0,880000	0,100008
-NaN	NaN
-NaN	NaN
-NaN	NaN
-NaN	NaN
-NaN	NaN
-NaN	NaN

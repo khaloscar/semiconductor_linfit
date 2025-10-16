@@ -3,3 +3,4 @@ Intercept: 1.828130248751985e-12
 Slope: 32.230473849389455
 Ideality constant: 1.200160048941323
 Series Rs: 1.0825400520608137
+Current backward bias (I0): -7.7853e-10

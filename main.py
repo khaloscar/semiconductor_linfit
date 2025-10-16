@@ -1,6 +1,7 @@
 import numpy as np
 from numpy.polynomial import Polynomial as Pln
 from matplotlib import pyplot as plt
+import pandas as pd
 
 class Data:
     
@@ -39,23 +40,102 @@ class Data:
         self.ideality_constant = q /(k*T*self.slope)*V_ideal_forward
 
         # Just need to extract the series Resistanc, finish this code
-        yy_idx = np.argmin(np.abs(yy-I_high))
-        y_idx = np.argmin(np.abs(y-I_high))
-        deltax = x[y_idx] - x[yy_idx]
+        y_idx = np.argmin(np.abs(self.y-I_high))
+        fit_y_idx = np.argmin(np.abs(self.fit_y-I_high))
+        deltax = self.x[fit_y_idx] - self.x[y_idx]
+        self.Rs = deltax/I_high
+
+        # y_0 axis intercept
+        # ideality constant
+        # Rs thats it ? 
 
 
 def main():
-    x = np.array([i for i in range(0,40)])
-    yy = (x+0.01)**2
-    y = 3*x
+    if False:
+        names = ["diodeA_Light","diodeA_Dark","diodeB_Light","diodeB_Dark"]
+    # Read the file, skip the header lines
+        filename = "diodeB_Light"
+        name = "Diode B Light"
+        df = pd.read_csv(
+            f'Data/{filename}.txt',
+            skiprows=3,          # skips the first 4 header lines
+            delim_whitespace=True,  # columns separated by spaces
+            decimal=','          # interpret commas as decimal points
+        )
 
-    value = 100
-    yy_idx = np.argmin(np.abs(yy-value))
-    y_idx = np.argmin(np.abs(y-value))
-    deltax = x[y_idx] - x[yy_idx]
-    print(deltax)
+    
 
+        # Extract columns into numpy arrays
+        x = df.iloc[:, 0].values  # Voltage (V)
+        y = df.iloc[:, 1].values  # Current (A)
 
-        
+        # --- 1. Normal linear plot ---
+        plt.figure(figsize=(8, 5))
+        plt.plot(x, y, 'o-', markersize=4)
+        plt.xlabel("Voltage (V)")
+        plt.ylabel("Current (A)")
+        plt.title(f"{name} IV Characteristic")
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig(f"{filename}_linear.png", dpi=600, bbox_inches='tight')
+        #plt.show()
+
+        # --- 2. Semilog (log y-axis) plot ---
+        plt.figure(figsize=(8, 5))
+        plt.semilogy(x, abs(y), 'o-', markersize=4)
+        plt.xlabel("Voltage (V)")
+        plt.ylabel("ln(I) (A)")
+        plt.title(f"{name} IV Characteristic")
+        plt.grid(True, which='both', ls='--')
+        plt.tight_layout()
+        plt.savefig(f"{filename}_semilog.png", dpi=600, bbox_inches='tight')
+        #plt.show()
+        print(f'yay')
+
+    if False:
+        names = ["diodeA_Light","diodeA_Dark","diodeB_Light","diodeB_Dark"]
+        # Read the file, skip the header lines
+        filename = "MOSCAP_CV_Light"
+        name = "MOSCAP Light"
+        df = pd.read_csv(
+            f'Data/{filename}.txt',
+            skiprows=3,          # skips the first 4 header lines
+            delim_whitespace=True,  # columns separated by spaces
+            decimal=','          # interpret commas as decimal points
+        )
+
+    
+
+        # Extract columns into numpy arrays
+        x = df.iloc[:, 0].values  # Voltage (V)
+        y = df.iloc[:, 1].values  # Current (A)
+
+        # --- 1. Normal linear plot ---
+        plt.figure(figsize=(8, 5))
+        plt.plot(x, y, 'o-', markersize=4)
+        plt.xlabel("Voltage (V)")
+        plt.ylabel("Capacitance (F)")
+        plt.title(f"{name} CV Characteristic")
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig(f"{filename}_linear.png", dpi=600, bbox_inches='tight')
+        #plt.show()
+
+        # --- 2. Semilog (log y-axis) plot ---
+        plt.figure(figsize=(8, 5))
+        plt.semilogy(x, abs(y), 'o-', markersize=4)
+        plt.xlabel("Voltage (V)")
+        plt.ylabel("ln(C) (F)")
+        plt.title(f"{name} CV Characteristic")
+        plt.grid(True, which='both', ls='--')
+        plt.tight_layout()
+        plt.savefig(f"{filename}_semilog.png", dpi=600, bbox_inches='tight')
+        #plt.show()
+        print(f'yay')
+    # read data and transform to log
+    # create linear fit,
+    # extract values 
+
+    
 if __name__ == "__main__":
     main()

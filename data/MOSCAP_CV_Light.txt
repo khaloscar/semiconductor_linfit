@@ -1,7 +1,6 @@
 MOSCAP CV measurement data file.
 Measurement comments:
 
-
 DC bias (V)	Capacitance (F)	Quality factor
 
 -10,000000	3,280070E-10	14,067100

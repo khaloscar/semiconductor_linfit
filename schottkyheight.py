@@ -18,8 +18,14 @@ wdep = dep*A*epsi
 ni = 10**10
 print(wdep)
 
+
 def Wdep(N):
     return math.sqrt(4*epsi*ktq*math.log(N/ni)/(q*N))-wdep
+
+def Wdep_prim(N):
+    a = 4*epsi*ktq/q
+    return a*(1-math.log(N/ni)) / (2*N**2*Wdep(N))
+
 print(Wdep(10**17))
 def bisection(f, a, b, tol=10**(-12), max_iter=100):
     fa, fb = f(a), f(b)
